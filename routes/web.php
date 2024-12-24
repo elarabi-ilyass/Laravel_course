@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[homeController::class,'index']);
 Route::get('/layout',[homeController::class,'Layout']);
+Route::get('/home', [homeController::class, 'LayoutProps']);

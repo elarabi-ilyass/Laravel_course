@@ -22,6 +22,15 @@ class homeController extends Controller
     public function Layout(){
         return view('Layout.Home');
     }
+
+    public function LayoutProps(){
+        $personnes=[
+            ['id'=>'0011','name'=>'Ilyass','job'=>'Developpeur Web Full stack'],
+            ['id'=>'0022','name'=>'Fouad','job'=>'Developpeur Front-end'],
+            ['id'=>'0033','name'=>'RACHID','job'=>'Developpeur Back-end'],
+        ];
+        return view('Layout.Home',compact('personnes'));
+    }
 }
 
 //I stopped in 13 video
