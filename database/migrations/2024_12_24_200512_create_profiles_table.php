@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 50); // Augmentez si nécessaire
             $table->string('email', 255)->unique(); // Les emails peuvent être longs
             $table->string('password', 255); // Les hash bcrypt font environ 60 caractères
-            $table->text('Description'); // Garde une grande capacité
+            $table->text('description'); // Garde une grande capacité
             $table->timestamps();
         });
     }

@@ -29,12 +29,29 @@ li a:hover {
 </head>
 <body>
 
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
-</ul>
+    <nav class=" p-4">
+        <ul class="flex space-x-4 text-white">
+            <li>
+                <a href="{{ url('/') }}"
+                   class="{{ Request::is('/') ? 'active font-bold underline' : '' }}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/profiles') }}"
+                   class="{{ Request::is('/profiles') ? 'active font-bold underline' : '' }}">
+                    News
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/About') }}"
+                   class="{{ Request::is('About') ? 'active font-bold underline' : '' }}">
+                    Contact
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 
 </body>
 </html>

@@ -33,13 +33,13 @@
 </head>
 <body>
 
-    @yield('header') <!-- Placeholder for header content -->
+    @include('Test.Header') <!-- Placeholder for header content -->
 
     <section>
         @yield('main') <!-- Placeholder for main content -->
     </section>
 
-    @yield('footer') <!-- Placeholder for footer content -->
+    @include('components.Footer') <!-- Placeholder for footer content -->
 
 </body>
 </html>

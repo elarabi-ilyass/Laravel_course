@@ -21,7 +21,7 @@ class ProfileFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'), // Génération d'un mot de passe haché
-            'Description' => $this->faker->text(100), // Limitation de la longueur de la description
+            'description' => $this->faker->text(100), // Limitation de la longueur de la description
         ];
     }
 }

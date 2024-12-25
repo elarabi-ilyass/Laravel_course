@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,18 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',[homeController::class,'index']);
-Route::get('/layout',[homeController::class,'Layout']);
-Route::get('/home', [homeController::class, 'LayoutProps']);
+// Route::get('/Contract',[homeController::class,'index']);
+// Route::get('/layout',[homeController::class,'Layout']);
+// Route::get('/home', [homeController::class, 'LayoutProps']);
+
+ Route::get('/',[ProfileController::class,'index']);
+ Route::get('/profiles/{id}',[ProfileController::class,'Show'])->name('Show.profile');
+ Route::get('/About',[ProfileController::class,'indexTest']);
+Route::post('/profiles', [ProfileController::class, 'ProfileStore'])->name('profiles.store');
+
+
+//indexProfile
+// Route::get('/',[ProfileController::class,'indexProfile']);
+
+// Route::resource('profiles', ProfileController::class);
+
