@@ -22,4 +22,8 @@ class Profile extends Model
         'password',
         'remember_token',
     ];
+
+    public function getRouteKeyName(){
+        return 'id';
+    }
 }

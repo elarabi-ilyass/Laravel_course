@@ -24,7 +24,7 @@ use App\Http\Controllers\ProfileController;
 // Route::get('/home', [homeController::class, 'LayoutProps']);
 
 Route::get('/',[ProfileController::class,'index'])->name('home-list');
-Route::get('/profiles/{id}',[ProfileController::class,'Show'])->name('Show.profile');
+Route::get('/profiles/{profile}',[ProfileController::class,'Show'])->name('Show.profile');
 Route::get('/About',[ProfileController::class,'indexTest']);
 Route::post('/profiles', [ProfileController::class, 'ProfileStore'])->name('profiles.store');
 Route::get('/create', [ProfileController::class, 'create'])->name('Create-Form');

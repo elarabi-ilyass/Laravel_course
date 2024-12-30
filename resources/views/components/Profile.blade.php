@@ -38,7 +38,7 @@
                                 {{ $profile->email }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ Str::limit($profile->Description, 20, '...') }}
+                                {{ Str::limit($profile->description, 20, '...') }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-around space-x-2">

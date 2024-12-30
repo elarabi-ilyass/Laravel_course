@@ -41,6 +41,9 @@ class ProfileController extends Controller
         Profile::create($data);
 
         // Redirect to the profiles view with a success message
+        //redirect()->route()=>to_route()
+        //redirect()->action()
+        //back()->withInput()
         return redirect()->route('home-list')->with('success', 'Profile created successfully.');
     }
 
@@ -49,12 +52,7 @@ class ProfileController extends Controller
 }
 
 
-    public function Show(Request $request) {
-        $id=(int)$request->id;
-        $profile=Profile::findOrFail($id);
-        if($profile===NULL){
-            return abort('404');
-        }
+    public function Show(Profile $profile) {
         return view('components.show',compact('profile'));
     }
 
