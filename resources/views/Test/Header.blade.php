@@ -38,10 +38,11 @@ li a:hover {
                 </a>
             </li>
             <li>
-                <a href="{{ url('/profiles') }}"
-                   class="{{ Request::is('/profiles') ? 'active font-bold underline' : '' }}">
-                    News
+                <a href="{{ route('Create-Form') }}"
+                    class="{{ Request::is('/create') ? 'active font-bold underline' : '' }}">
+                        News
                 </a>
+
             </li>
             <li>
                 <a href="{{ url('/About') }}"

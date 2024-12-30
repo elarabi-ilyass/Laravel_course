@@ -23,10 +23,12 @@ use App\Http\Controllers\ProfileController;
 // Route::get('/layout',[homeController::class,'Layout']);
 // Route::get('/home', [homeController::class, 'LayoutProps']);
 
- Route::get('/',[ProfileController::class,'index']);
- Route::get('/profiles/{id}',[ProfileController::class,'Show'])->name('Show.profile');
- Route::get('/About',[ProfileController::class,'indexTest']);
+Route::get('/',[ProfileController::class,'index'])->name('home-list');
+Route::get('/profiles/{id}',[ProfileController::class,'Show'])->name('Show.profile');
+Route::get('/About',[ProfileController::class,'indexTest']);
 Route::post('/profiles', [ProfileController::class, 'ProfileStore'])->name('profiles.store');
+Route::get('/create', [ProfileController::class, 'create'])->name('Create-Form');
+
 
 
 //indexProfile

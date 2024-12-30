@@ -1,6 +1,6 @@
 @props(['personnes'])
 <div>
-    <table border="2" style="width: 100%; border-collapse: collapse;">
+    <table class="relative group bg-gray-200 rounded-lg shadow-md p-4" border="2" style="width: 100%; border-collapse: collapse;">
         <caption>List of Persons</caption>
         <thead>
             <tr>

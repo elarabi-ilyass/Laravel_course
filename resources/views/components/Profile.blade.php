@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-                @if ($profiles->count())
+                @if(isset($profiles) && $profiles->count())
                     @foreach ($profiles as $profile)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

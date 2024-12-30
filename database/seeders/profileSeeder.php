@@ -15,7 +15,7 @@ class ProfileSeeder extends Seeder
      */
     public function run(): void
     {
-        Profile::factory(20)->create();
+        Profile::factory(10)->create();
         // DB::table('profiles')->insert([
         //     'name' => Str::random(30), // Correspond à la taille définie dans la migration
         //     'email' => Str::random(10) . '@gmail.com', // Évitez de dépasser 255 caractères

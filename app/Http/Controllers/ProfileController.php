@@ -21,15 +21,14 @@ class ProfileController extends Controller
     // }
     public function ProfileStore(Request $request)
     {
-        // Validate the incoming data
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:profiles,email',
             'password' => 'required',
             'description' => 'required',
         ]);
 
-        // If validation fails, redirect back with errors
+        // Redirect back with errors if validation fails
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -38,21 +37,24 @@ class ProfileController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
 
-        // Create the new profile in the database
-        Profile::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'description' => $data['description'],
-        ]);
+        // Create the new profile
+        Profile::create($data);
 
         // Redirect to the profiles view with a success message
-        return view('components.Profile');
+        return redirect()->route('home-list')->with('success', 'Profile created successfully.');
     }
 
+    public function create(){
+    return view('components.Store'); // Replace 'components.Store' with the actual path of your view if different
+}
+
+
     public function Show(Request $request) {
-        $id=$request->id;
-        $profile=Profile::find($id);
+        $id=(int)$request->id;
+        $profile=Profile::findOrFail($id);
+        if($profile===NULL){
+            return abort('404');
+        }
         return view('components.show',compact('profile'));
     }
 

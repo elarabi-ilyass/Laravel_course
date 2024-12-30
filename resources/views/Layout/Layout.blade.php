@@ -34,6 +34,7 @@
 <body>
 
     @include('Test.Header') <!-- Placeholder for header content -->
+    @include('components.Flashbag')
 
     <section>
         @yield('main') <!-- Placeholder for main content -->

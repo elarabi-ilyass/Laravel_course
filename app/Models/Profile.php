@@ -14,7 +14,7 @@ class Profile extends Model
         'name',
         'email',
         'password',
-        'Description',  // updated to lowercase
+        'description',  // updated to lowercase
     ];
 
     // Protect sensitive fields from being exposed in arrays or JSON
