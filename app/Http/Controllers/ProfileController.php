@@ -22,10 +22,10 @@ class ProfileController extends Controller
     public function ProfileStore(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:profiles,email',
-            'password' => 'required',
-            'description' => 'required',
+            'password' => 'required|min:6',
+            'description' => 'required|string|max:1000',
         ]);
 
         // Redirect back with errors if validation fails
