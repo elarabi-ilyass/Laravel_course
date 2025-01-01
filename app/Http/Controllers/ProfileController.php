@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,30 +21,17 @@ class ProfileController extends Controller
     // public function indexProfile(){
     //     return view('components.profile');
     // }
-    public function ProfileStore(Request $request)
+    public function ProfileStore(ProfileRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:profiles,email',
-            'password' => 'required|min:6|confirmed',
-            'description' => 'required|string|max:1000',
-        ]);
-
-        // Redirect back with errors if validation fails
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
+        $data = $request->validated();
         // Encrypt the password
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
         $data['email'] = strtolower($data['email']);
 
-        dd($data);
+        // dd($data);
         // Create the new profile
         Profile::create($data);
-
-
         // Redirect to the profiles view with a success message
         //redirect()->route()=>to_route()
         //redirect()->action()

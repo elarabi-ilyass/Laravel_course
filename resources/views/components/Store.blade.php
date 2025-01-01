@@ -28,7 +28,14 @@
                         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                             <div class="md:col-span-5">
                                 <label for="name" class="font-medium text-gray-700">Full Name</label>
-                                <input type="text" name="name" id="name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter full name"  />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    value="{{ old('name') }}"
+                                    class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    placeholder="Enter full name">
+
                                 @error('name')
                                     <div class="text-red-500">
                                         {{ $message }}
