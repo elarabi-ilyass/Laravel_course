@@ -28,7 +28,7 @@
                         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                             <div class="md:col-span-5">
                                 <label for="name" class="font-medium text-gray-700">Full Name</label>
-                                <input type="text" name="name" id="name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter full name" required />
+                                <input type="text" name="name" id="name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter full name"  />
                                 @error('name')
                                     <div class="text-red-500">
                                         {{ $message }}
@@ -37,7 +37,7 @@
                             </div>
                             <div class="md:col-span-5">
                                 <label for="email" class="font-medium text-gray-700">Email Address</label>
-                                <input type="email" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="email@domain.com" required />
+                                <input type="email" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="email@domain.com"  />
                                 @error('email')
                                     <div class="text-red-500">
                                         {{ $message }}
@@ -46,7 +46,16 @@
                             </div>
                             <div class="md:col-span-3">
                                 <label for="password" class="font-medium text-gray-700">Password</label>
-                                <input type="password" name="password" id="password" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter password" required />
+                                <input type="password" name="password" id="password" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter password"  />
+                                @error('password')
+                                    <div class="text-red-500">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="md:col-span-3">
+                                <label for="password" class="font-medium text-gray-700">Password Confirmation</label>
+                                <input type="password" name="password_confirmation" id="password" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter password"  />
                                 @error('password')
                                     <div class="text-red-500">
                                         {{ $message }}
@@ -55,7 +64,7 @@
                             </div>
                             <div class="md:col-span-5">
                                 <label for="description" class="font-medium text-gray-700">Description</label>
-                                <textarea name="description" id="description" class="h-24 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add your description" required></textarea>
+                                <textarea name="description" id="description" class="h-24 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add your description" ></textarea>
                                 @error('description')
                                     <div class="text-red-500">
                                         {{ $message }}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -24,7 +25,7 @@ class ProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:profiles,email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:6|confirmed',
             'description' => 'required|string|max:1000',
         ]);
 
@@ -35,10 +36,13 @@ class ProfileController extends Controller
 
         // Encrypt the password
         $data = $request->all();
-        $data['password'] = bcrypt($data['password']);
+        $data['password'] = Hash::make($request->password);
+        $data['email'] = strtolower($data['email']);
 
+        dd($data);
         // Create the new profile
         Profile::create($data);
+
 
         // Redirect to the profiles view with a success message
         //redirect()->route()=>to_route()
