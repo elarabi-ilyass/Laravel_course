@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,11 @@ Route::get('/profiles/{profile}',[ProfileController::class,'Show'])->name('Show.
 Route::get('/About',[ProfileController::class,'indexTest']);
 Route::post('/profiles', [ProfileController::class, 'ProfileStore'])->name('profiles.store');
 Route::get('/create', [ProfileController::class, 'create'])->name('Create-Form');
+
+//LoginController
+Route::get('/LoginForm', [LoginController::class, 'LoginForm'])->name('LoginForm');
+Route::post('/LoginForm', [LoginController::class, 'Login'])->name('Login');
+Route::get('/Logout', [LoginController::class, 'Logout'])->name('Login.Logout');
 
 
 

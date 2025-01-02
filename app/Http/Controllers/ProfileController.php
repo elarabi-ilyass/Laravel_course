@@ -48,4 +48,5 @@ class ProfileController extends Controller
         return view('components.show',compact('profile'));
     }
 
+
 }
