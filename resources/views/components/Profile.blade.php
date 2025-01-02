@@ -42,11 +42,14 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-around space-x-2">
-                                    <button
-                                        type="button"
-                                        class="text-white bg-green-500 hover:bg-green-600 font-medium py-2 px-4 rounded">
-                                        Edit
-                                    </button>
+                                    <form action="{{ route('Edit_Profile', $profile->id) }}" method="GET">
+                                        <button
+                                            type="submit"
+                                            class="text-white bg-green-500 hover:bg-green-600 font-medium py-2 px-4 rounded">
+                                            Edit
+                                        </button>
+                                    </form>
+
                                     <form action="{{ route('profiles.destroy', $profile->id) }}" method="post">
                                         @method('DELETE')
                                         @csrf

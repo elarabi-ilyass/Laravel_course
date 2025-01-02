@@ -53,4 +53,19 @@ class ProfileController extends Controller
         return to_route('home-list')->with('success','Successfully deleted');
     }
 
+    public function edit(Profile $profile) {
+        // Logic for editing the profile
+        return view('components.Edit', compact('profile'));
+    }
+
+    public function update(ProfileRequest $request, Profile $profile) {
+        // Logic for updating the profile
+        $data = $request->validated();
+        $data['email'] = strtolower($data['email']);
+        $profile->update($data);
+        // $profile->fill($data)->save();
+        return to_route('home-list')->with('success','Profile updated successfully');
+
+    }
+
   }

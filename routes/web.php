@@ -30,6 +30,8 @@ Route::post('/profiles', [ProfileController::class, 'ProfileStore'])->name('prof
 Route::delete('/profiles/{profile}', [ProfileController::class, 'destroy'])->name('profiles.destroy');
 Route::get('/About',[ProfileController::class,'indexTest']);
 Route::get('/create', [ProfileController::class, 'create'])->name('Create-Form');
+Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])->name('Edit_Profile');
+Route::put('/profiles/{profile}', [ProfileController::class, 'update'])->name('Update_Profile');
 
 //LoginController
 Route::get('/LoginForm', [LoginController::class, 'LoginForm'])->name('LoginForm');
