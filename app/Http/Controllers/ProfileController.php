@@ -48,5 +48,9 @@ class ProfileController extends Controller
         return view('components.show',compact('profile'));
     }
 
+    public function destroy(Profile $profile) {
+        $profile->delete();
+        return to_route('home-list')->with('success','Successfully deleted');
+    }
 
-}
+  }

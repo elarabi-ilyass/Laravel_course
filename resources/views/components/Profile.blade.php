@@ -47,11 +47,15 @@
                                         class="text-white bg-green-500 hover:bg-green-600 font-medium py-2 px-4 rounded">
                                         Edit
                                     </button>
-                                    <button
-                                        type="button"
-                                        class="text-white bg-rose-700 hover:bg-rose-800 font-medium py-2 px-4 rounded">
-                                        Delete
-                                    </button>
+                                    <form action="{{ route('profiles.destroy', $profile->id) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button
+                                            type="submit"
+                                            class="text-white bg-rose-700 hover:bg-rose-800 font-medium py-2 px-4 rounded">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
