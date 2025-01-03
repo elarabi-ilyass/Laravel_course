@@ -29,6 +29,13 @@ class ProfileController extends Controller
         $data['password'] = Hash::make($request->password);
         $data['email'] = strtolower($data['email']);
 
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('images'), $image_name);
+            $data['image'] = $image_name;
+
+        }
         // dd($data);
         // Create the new profile
         Profile::create($data);
@@ -62,6 +69,13 @@ class ProfileController extends Controller
         // Logic for updating the profile
         $data = $request->validated();
         $data['email'] = strtolower($data['email']);
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('images'), $image_name);
+            $data['image'] = $image_name;
+
+        }
         $profile->update($data);
         // $profile->fill($data)->save();
         return to_route('home-list')->with('success','Profile updated successfully');

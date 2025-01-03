@@ -14,7 +14,7 @@
 @endif
 
 <!-- Component -->
-<form action="{{ route('profiles.store') }}" method="POST">
+<form action="{{ route('profiles.store') }}" method="POST" enctype="multipart/form-data">
     @csrf <!-- CSRF protection -->
     <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
@@ -44,7 +44,13 @@
                             </div>
                             <div class="md:col-span-5">
                                 <label for="email" class="font-medium text-gray-700">Email Address</label>
-                                <input type="email" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="email@domain.com"  />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    value="{{ old('email') }}"
+                                    class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    placeholder="email@domain.com">
                                 @error('email')
                                     <div class="text-red-500">
                                         {{ $message }}
@@ -53,7 +59,12 @@
                             </div>
                             <div class="md:col-span-3">
                                 <label for="password" class="font-medium text-gray-700">Password</label>
-                                <input type="password" name="password" id="password" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter password"  />
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    placeholder="Enter password">
                                 @error('password')
                                     <div class="text-red-500">
                                         {{ $message }}
@@ -61,9 +72,27 @@
                                 @enderror
                             </div>
                             <div class="md:col-span-3">
-                                <label for="password" class="font-medium text-gray-700">Password Confirmation</label>
-                                <input type="password" name="password_confirmation" id="password" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter password"  />
-                                @error('password')
+                                <label for="password_confirmation" class="font-medium text-gray-700">Password Confirmation</label>
+                                <input
+                                    type="password"
+                                    name="password_confirmation"
+                                    id="password_confirmation"
+                                    class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    placeholder="Confirm password">
+                                @error('password_confirmation')
+                                    <div class="text-red-500">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="md:col-span-3">
+                                <label for="image" class="font-medium text-gray-700">Add File Image</label>
+                                <input
+                                    type="file"
+                                    name="image"
+                                    id="image"
+                                    class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                @error('image')
                                     <div class="text-red-500">
                                         {{ $message }}
                                     </div>
@@ -71,7 +100,11 @@
                             </div>
                             <div class="md:col-span-5">
                                 <label for="description" class="font-medium text-gray-700">Description</label>
-                                <textarea name="description" id="description" class="h-24 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add your description" ></textarea>
+                                <textarea
+                                    name="description"
+                                    id="description"
+                                    class="h-24 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    placeholder="Add your description">{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="text-red-500">
                                         {{ $message }}
@@ -79,7 +112,9 @@
                                 @enderror
                             </div>
                             <div class="md:col-span-5 text-right">
-                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <button
+                                    type="submit"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     Create Profile
                                 </button>
                             </div>
