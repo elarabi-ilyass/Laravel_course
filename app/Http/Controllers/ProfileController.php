@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -65,21 +66,38 @@ class ProfileController extends Controller
         return view('components.Edit', compact('profile'));
     }
 
-    public function update(ProfileRequest $request, Profile $profile) {
-        // Logic for updating the profile
-        $data = $request->validated();
-        $data['email'] = strtolower($data['email']);
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $image_name = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images'), $image_name);
-            $data['image'] = $image_name;
+    public function update(ProfileRequest $request, Profile $profile)
+{
+    // Validate and prepare data
+    $data = $request->validated();
+    $data['email'] = strtolower($data['email']);
 
-        }
-        $profile->update($data);
-        // $profile->fill($data)->save();
-        return to_route('home-list')->with('success','Profile updated successfully');
-
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $data['image'] = $this->uploadImage($request, $profile);
     }
+
+    // Update the profile
+    $profile->update($data);
+
+    return to_route('home-list')->with('success', 'Profile updated successfully');
+}
+
+private function uploadImage(ProfileRequest $request, Profile $profile)
+{
+    // Check if a previous image exists
+    if ($profile->image) {
+        // Delete the old image
+        Storage::disk('public')->delete('images/' . $profile->image);
+    }
+
+    // Upload the new image
+    $image = $request->file('image');
+    $image_name = time() . '.' . $image->getClientOriginalExtension();
+    $image->storeAs('images', $image_name, 'public');
+
+    return $image_name;
+}
+
 
   }

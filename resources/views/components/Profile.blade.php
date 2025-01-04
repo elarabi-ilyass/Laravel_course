@@ -43,10 +43,11 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
 
                                 <img
-                                src="{{ asset('images/' . $profile->image) }}"
+                                src="{{ asset('storage/images/' . $profile->image) }}"
                                 alt="Profile Image"
-                                class="w-12 rounded-3xl h-12 object-cover "
-                                  >
+                                class="w-12 rounded-3xl h-12 object-cover"
+                            />
+
 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

@@ -87,6 +87,7 @@
                                     type="file"
                                     name="image"
                                     id="image"
+                                    value="{{ old('image') }}"
                                     class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 @error('image')
                                     <div class="text-red-500">{{ $message }}</div>
