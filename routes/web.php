@@ -33,6 +33,9 @@ Route::get('/create', [ProfileController::class, 'create'])->name('Create-Form')
 Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])->name('Edit_Profile');
 Route::put('/profiles/{profile}', [ProfileController::class, 'update'])->name('Update_Profile');
 
+//PersonnesDetails
+Route::get('/PersonnesDetails',[ProfileController::class,'DetailsPersonne'])->name('PersonnesDetails');
+
 //LoginController
 Route::get('/LoginForm', [LoginController::class, 'LoginForm'])->name('LoginForm');
 Route::post('/LoginForm', [LoginController::class, 'Login'])->name('Login');

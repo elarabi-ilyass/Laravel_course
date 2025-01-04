@@ -59,7 +59,7 @@
                         class="absolute right-0 mt-2 w-48 bg-white text-gray-800 border border-gray-300 rounded-md shadow-lg hidden"
                         id="DropdownMenu">
                         <li>
-                            <a href="{{ url('/settings') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                            <a href="{{ url('/PersonnesDetails') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
                                 Settings
                             </a>
                         </li>

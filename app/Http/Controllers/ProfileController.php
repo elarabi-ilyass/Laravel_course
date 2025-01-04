@@ -99,5 +99,9 @@ private function uploadImage(ProfileRequest $request, Profile $profile)
     return $image_name;
 }
 
+public function DetailsPersonne(){
+    return view('components.PersonnesDetails');
+}
 
-  }
+
+}

@@ -11,6 +11,7 @@ class Profile extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $date=['created_at'];
     // Make sure to use lowercase for consistency with other fields like 'description'
     protected $fillable = [
         'name',
