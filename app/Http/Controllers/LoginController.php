@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -11,6 +12,8 @@ class LoginController extends Controller
     public function LoginForm(){
         return view('components.Login');
     }
+    // return view('components.Profile');
+
 
     public function Login(Request $request){
         $credentials = $request->validate([
@@ -24,7 +27,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return to_route('home-list')->with('success', 'Welcome to the home page');
+            return to_route('profiles.home_list')->with('success', 'Welcome to the home page');
         }
         else{
             return back()->withErrors([
@@ -38,5 +41,8 @@ class LoginController extends Controller
         Auth::logout();
         return to_route('Login')->with('success', 'You have been logged out');
     }
+
+
+
 
 }

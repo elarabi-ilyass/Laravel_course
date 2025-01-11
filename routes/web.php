@@ -24,14 +24,18 @@ use App\Http\Controllers\LoginController;
 // Route::get('/layout',[homeController::class,'Layout']);
 // Route::get('/home', [homeController::class, 'LayoutProps']);
 
-Route::get('/',[ProfileController::class,'index'])->name('home-list');
-Route::get('/profiles/{profile}',[ProfileController::class,'Show'])->name('Show.profile');
-Route::post('/profiles', [ProfileController::class, 'ProfileStore'])->name('profiles.store');
-Route::delete('/profiles/{profile}', [ProfileController::class, 'destroy'])->name('profiles.destroy');
-Route::get('/About',[ProfileController::class,'indexTest']);
-Route::get('/create', [ProfileController::class, 'create'])->name('Create-Form');
-Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit'])->name('Edit_Profile');
-Route::put('/profiles/{profile}', [ProfileController::class, 'update'])->name('Update_Profile');
+Route::name('profiles.')->group(function(){
+    Route::controller(ProfileController::class)->group(function(){
+        Route::get('/','index')->name('home_list');
+        Route::get('/profiles/{profile}','Show')->name('Show');
+        Route::post('/profiles',  'ProfileStore')->name('store');
+        Route::delete('/profiles/{profile}',  'destroy')->name('destroy');
+        Route::get('/About','indexTest');
+        Route::get('/create',  'create')->name('CreateForm');
+        Route::get('/profiles/{profile}/edit',  'edit')->name('Edit');
+        Route::put('/profiles/{profile}',  'update')->name('Update');
+    });
+});
 
 //PersonnesDetails
 Route::get('/PersonnesDetails',[ProfileController::class,'DetailsPersonne'])->name('PersonnesDetails');
@@ -44,7 +48,7 @@ Route::get('/Logout', [LoginController::class, 'Logout'])->name('Login.Logout');
 
 
 //indexProfile
-// Route::get('/',[ProfileController::class,'indexProfile']);
+// Route::get('/',[,'indexProfile']);
 
-// Route::resource('profiles', ProfileController::class);
+// Route::resource('profiles', );
 

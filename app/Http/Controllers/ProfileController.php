@@ -22,7 +22,7 @@ class ProfileController extends Controller
     // public function indexProfile(){
     //     return view('components.profile');
     // }
-    public function ProfileStore(ProfileRequest $request)
+    public function ProfileStore(ProfileRequest $request,Profile $profile)
     {
         $data = $request->validated();
         // Encrypt the password
@@ -31,10 +31,7 @@ class ProfileController extends Controller
         $data['email'] = strtolower($data['email']);
 
         if($request->hasFile('image')){
-            $image = $request->file('image');
-            $image_name = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images'), $image_name);
-            $data['image'] = $image_name;
+            $data['image'] = $this->uploadImage($request, $profile);
 
         }
         // dd($data);
@@ -44,7 +41,7 @@ class ProfileController extends Controller
         //redirect()->route()=>to_route()
         //redirect()->action()
         //back()->withInput()
-        return redirect()->route('home-list')->with('success', 'Profile created successfully.');
+        return redirect()->route('profiles.home_list')->with('success', 'Profile created successfully.');
     }
 
     public function create(){
@@ -58,7 +55,7 @@ class ProfileController extends Controller
 
     public function destroy(Profile $profile) {
         $profile->delete();
-        return to_route('home-list')->with('success','Successfully deleted');
+        return to_route('profiles.home_list')->with('success','Successfully deleted');
     }
 
     public function edit(Profile $profile) {
@@ -80,7 +77,7 @@ class ProfileController extends Controller
     // Update the profile
     $profile->update($data);
 
-    return to_route('home-list')->with('success', 'Profile updated successfully');
+    return to_route('profiles.home_list')->with('success', 'Profile updated successfully');
 }
 
 private function uploadImage(ProfileRequest $request, Profile $profile)

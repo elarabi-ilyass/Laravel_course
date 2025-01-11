@@ -18,13 +18,13 @@
         <ul class="flex items-center space-x-4 text-white">
             <!-- Navigation links -->
             <li>
-                <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'font-bold underline' : '' }} hover:text-gray-300">
+                <a href="{{ route('profiles.home_list') }}" class="{{ Request::is('/') ? 'font-bold underline' : '' }} hover:text-gray-300">
                     Home
                 </a>
             </li>
             <li>
-                <a href="{{ route('Create-Form') }}" class="{{ Request::is('create') ? 'font-bold underline' : '' }} hover:text-gray-300">
-                    News
+                <a href="{{ route('profiles.CreateForm') }}" class="{{ Request::is('create') ? 'font-bold underline' : '' }} hover:text-gray-300">
+                    Stores
                 </a>
             </li>
             <li>
