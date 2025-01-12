@@ -14,7 +14,7 @@
 @endif
 
 <!-- Edit Profile Form -->
-<form action="{{ route('profiles.Update', $profile->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('profiles.update', $profile->id) }}" method="POST" enctype="multipart/form-data">
     @csrf <!-- CSRF protection -->
     @method('PUT')
     <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">

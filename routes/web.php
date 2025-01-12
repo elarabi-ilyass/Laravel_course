@@ -16,27 +16,15 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('Test.welcome');
+});
 
 // Route::get('/Contract',[homeController::class,'index']);
 // Route::get('/layout',[homeController::class,'Layout']);
 // Route::get('/home', [homeController::class, 'LayoutProps']);
 
-Route::name('profiles.')->group(function(){
-    Route::controller(ProfileController::class)->group(function(){
-        Route::get('/','index')->name('home_list');
-        Route::get('/profiles/{profile}','Show')->name('Show');
-        Route::post('/profiles',  'ProfileStore')->name('store');
-        Route::delete('/profiles/{profile}',  'destroy')->name('destroy');
-        Route::get('/About','indexTest');
-        Route::get('/create',  'create')->name('CreateForm');
-        Route::get('/profiles/{profile}/edit',  'edit')->name('Edit');
-        Route::put('/profiles/{profile}',  'update')->name('Update');
-    });
-});
-
+Route::resource('profiles', ProfileController::class);
 //PersonnesDetails
 Route::get('/PersonnesDetails',[ProfileController::class,'DetailsPersonne'])->name('PersonnesDetails');
 

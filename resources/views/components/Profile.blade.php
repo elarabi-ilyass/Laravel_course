@@ -33,7 +33,7 @@
                                 {{ $profile->id }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <a href="{{ route('profiles.Show', $profile->id) }}" class="text-blue-500 hover:underline">
+                                <a href="{{ route('profiles.show', $profile->id) }}" class="text-blue-500 hover:underline">
                                     {{ $profile->name }}
                                 </a>
                             </td>
@@ -55,7 +55,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-around space-x-2">
-                                    <form action="{{ route('profiles.Edit', $profile->id) }}" method="GET">
+                                    <form action="{{ route('profiles.edit', $profile->id) }}" method="GET">
                                         <button
                                             type="submit"
                                             class="text-white bg-green-500 hover:bg-green-600 font-medium py-2 px-4 rounded">

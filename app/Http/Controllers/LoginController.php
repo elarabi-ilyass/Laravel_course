@@ -27,7 +27,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return to_route('profiles.home_list')->with('success', 'Welcome to the home page');
+            return to_route('profiles.index')->with('success', 'Welcome to the home page');
         }
         else{
             return back()->withErrors([
