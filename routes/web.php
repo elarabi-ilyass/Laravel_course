@@ -36,8 +36,17 @@ Route::get('/Logout', [LoginController::class, 'Logout'])->name('Login.Logout');
 
 Route::get('/About',[ProfileController::class,'indexTest']);
 
-//indexProfile
-// Route::get('/',[,'indexProfile']);
 
-// Route::resource('profiles', );
+
+//Test
+Route::get('/route',function(){
+    //  dd(Route::current());
+    //  dd(Route::currentRouteName());
+     dd(Route::currentRouteAction());
+})->name('AMAL NAM');
+
+Route::get('/google',function(){
+    return redirect()->away('https://www.google.com');
+});
+
 
