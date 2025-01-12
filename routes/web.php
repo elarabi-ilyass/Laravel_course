@@ -1,9 +1,12 @@
 <?php
 
+
+use App\Operation;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,15 +41,12 @@ Route::get('/About',[ProfileController::class,'indexTest']);
 
 
 
-//Test
-Route::get('/route',function(){
-    //  dd(Route::current());
-    //  dd(Route::currentRouteName());
-     dd(Route::currentRouteAction());
-})->name('AMAL NAM');
-
-Route::get('/google',function(){
-    return redirect()->away('https://www.google.com');
+//Operation
+Route::get('/Somme/{a}/{b}', function ($a, $b,Operation $operation) {
+    return $operation->Calcule($a, $b);
 });
+
+//injection de dépendances?
+
 
 
