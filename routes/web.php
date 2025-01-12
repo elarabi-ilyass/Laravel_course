@@ -16,9 +16,10 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('Test.welcome');
-});
+// Route::get('/', function () {
+//     return view('Test.welcome');
+// });
+Route::get('/',[homeController::class,'index']);
 
 // Route::get('/Contract',[homeController::class,'index']);
 // Route::get('/layout',[homeController::class,'Layout']);
@@ -29,11 +30,11 @@ Route::resource('profiles', ProfileController::class);
 Route::get('/PersonnesDetails',[ProfileController::class,'DetailsPersonne'])->name('PersonnesDetails');
 
 //LoginController
-Route::get('/LoginForm', [LoginController::class, 'LoginForm'])->name('LoginForm');
+Route::get('/LoginForm', [LoginController::class, 'LoginForm'])->name('LoginForm')->middleware('guest');
 Route::post('/LoginForm', [LoginController::class, 'Login'])->name('Login');
 Route::get('/Logout', [LoginController::class, 'Logout'])->name('Login.Logout');
 
-
+Route::get('/About',[ProfileController::class,'indexTest']);
 
 //indexProfile
 // Route::get('/',[,'indexProfile']);

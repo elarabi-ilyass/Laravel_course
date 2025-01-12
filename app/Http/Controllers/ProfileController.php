@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except(['indexTest']);
+    }
     public function index(){
         $profiles=Profile::paginate(15);
         return view('components.profile',compact('profiles'));
