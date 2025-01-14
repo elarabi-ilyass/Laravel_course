@@ -47,15 +47,24 @@ Route::get('/About',[ProfileController::class,'indexTest']);
 
 
 //DownLoad image
-Route::view('/form','Test.FormTest');
-Route::post('/form',function(Request $request){
-//using inline display image but not download
-//using attachment download image but not display
-    return response()->download(storage_path('app/public/images/1735835562.jpg'),null,[],'attachment'); ;
-})->name('Test.Form');
+// Route::view('/form','Test.FormTest');
+// Route::post('/form',function(Request $request){
+// //using inline display image but not download
+// //using attachment download image but not display
+//     return response()->download(storage_path('app/public/images/1735835562.jpg'),null,[],'attachment'); ;
+// })->name('Test.Form');
 
 
-//injection de dépendances?
+//Cookies
+Route::view('/test','Test.test');
+Route::get('/test/{cookie}', function ($cookie) {
+    // Crée un objet cookie
+    $cookieObject = cookie('age', $cookie, 1);
+    dd($cookie);
+
+    // Retourne une réponse avec le cookie attaché
+    return response('Cookie set')->cookie($cookieObject);
+})->name('Test');
 
 
 

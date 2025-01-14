@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -26,8 +27,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $user=Auth::user();
+            $cookie=cookie('email',$user->email,2);
 
-            return to_route('profiles.index')->with('success', 'Welcome to the home page');
+            return to_route('profiles.index')->withCookie($cookie)->with('success', 'Welcome to the home page');
         }
         else{
             return back()->withErrors([
@@ -39,6 +42,7 @@ class LoginController extends Controller
     public function Logout(){
         Session::flush();
         Auth::logout();
+        Cookie::queue(Cookie::forget('email'));
         return to_route('Login')->with('success', 'You have been logged out');
     }
 
