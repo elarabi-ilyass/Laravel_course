@@ -25,7 +25,7 @@
 </head>
 <body>
 
-    @include('Test.Header')
+    @include('components.Header')
 
     <h1>Salut tout le monde</h1>
     {{-- Simple Example --}}

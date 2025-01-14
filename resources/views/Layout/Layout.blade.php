@@ -35,7 +35,7 @@
 </head>
 <body>
 
-    @include('Test.Header') <!-- Placeholder for header content -->
+    @include('components.Header') <!-- Placeholder for header content -->
     @include('components.Flashbag')
 
     <section>
