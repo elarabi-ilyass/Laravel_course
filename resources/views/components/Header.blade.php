@@ -15,7 +15,7 @@
 </head>
 <body>
     <nav class="bg-gray-800 p-4">
-        <ul class="flex items-center space-x-4 text-white">
+        <ul class="flex items-center space-x-2 text-white">
             <!-- Navigation links -->
             <li>
                 <a href="{{ route('profiles.index') }}" class="{{ Request::is('/') ? 'font-bold underline' : '' }} hover:text-gray-300">
@@ -27,9 +27,10 @@
                     Stores
                 </a>
             </li>
+
             <li>
-                <a href="{{ url('/About') }}" class="{{ Request::is('About') ? 'font-bold underline' : '' }} hover:text-gray-300">
-                    Contact
+                <a href="{{ route('publications.create') }}" class="{{ Request::is('create') ? 'font-bold  underline' : '' }} hover:text-gray-300">
+                     Publication
                 </a>
             </li>
 
@@ -69,6 +70,8 @@
                                 Logout
                             </a>
                         </li>
+
+
                     </ul>
                     </li>
                 @endauth
@@ -78,8 +81,12 @@
     <script>
         const ButtonClick=document.getElementById('ButtonClick');
         const Dropdown=document.getElementById('DropdownMenu');
+        var x = document.getElementsByTagName("BODY")
         ButtonClick.addEventListener('click',()=>{
             Dropdown.classList.toggle('hidden');
+            x.classList.toggle('hidden');
+
+
         })
     </script>
 </body>

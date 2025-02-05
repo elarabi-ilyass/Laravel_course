@@ -32,7 +32,9 @@ Route::post('/LoginForm', [LoginController::class, 'Login'])->name('Login');
 Route::get('/Logout', [LoginController::class, 'Logout'])->name('Login.Logout');
 Route::get('/About',[ProfileController::class,'indexTest']);
 
-Route::get('publications',[PublicationController::class]);
+Route::resource('publications',PublicationController::class);
+
+Route::get('/Publication',[PublicationController::class,'GetPublications'])->name('getpublications');
 
 
 

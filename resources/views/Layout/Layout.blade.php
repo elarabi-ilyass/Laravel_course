@@ -38,7 +38,7 @@
     @include('components.Header') <!-- Placeholder for header content -->
     @include('components.Flashbag')
 
-    <section>
+    <section >
         @yield('main') <!-- Placeholder for main content -->
     </section>
 
